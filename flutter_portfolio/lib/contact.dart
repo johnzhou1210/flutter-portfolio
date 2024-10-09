@@ -39,11 +39,15 @@ class SocialMedia extends StatelessWidget {
       ),
       leading: const Icon(Icons.facebook),
       onTap: () {
-        LaunchURL('https://google.com');
+        LaunchURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
       },
     );
   }
 }
+
+
+
 
 class Contact extends StatefulWidget {
   const Contact({super.key});
@@ -63,7 +67,7 @@ class _ContactState extends State<Contact> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.email, size: 86),
-              Text(
+              SelectableText(
                 '    johnzhou256@gmail.com',
                 style: TextStyle(
                   fontSize: 64,
