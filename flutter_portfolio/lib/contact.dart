@@ -3,18 +3,18 @@ import 'utils.dart';
 
 List<SocialMedia> Contacts = <SocialMedia>[
   const SocialMedia(
-    name: "Facebook",
-    link: "",
+    name: "Github",
+    link: "https://github.com/johnzhou1210",
     icon: Icon(Icons.facebook),
   ),
   const SocialMedia(
-    name: "Facebook",
-    link: "",
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/john-zhou-6987181bb/",
     icon: Icon(Icons.facebook),
   ),
   const SocialMedia(
-    name: "Facebook",
-    link: "",
+    name: "Itch.io",
+    link: "https://zhouj6.itch.io/",
     icon: Icon(Icons.facebook),
   ),
 ];
@@ -40,14 +40,10 @@ class SocialMedia extends StatelessWidget {
       leading: const Icon(Icons.facebook),
       onTap: () {
         LaunchURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-
       },
     );
   }
 }
-
-
-
 
 class Contact extends StatefulWidget {
   const Contact({super.key});
@@ -63,17 +59,30 @@ class _ContactState extends State<Contact> {
         builder: (BuildContext context, BoxConstraints constraints) {
       return Column(
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.email, size: 86),
-              SelectableText(
-                '    johnzhou256@gmail.com',
-                style: TextStyle(
-                  fontSize: 64,
+          const Text('Contact Me!', style: TextStyle(fontSize: 64)),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Spacer(flex: 4),
+                Expanded(
+                    flex: 1,
+                    child:
+                        Icon(Icons.email, size: constraints.maxWidth * .035)),
+                Expanded(
+                  flex: 9,
+                  child: SelectableText(
+                    'johnzhou256@gmail.com',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: constraints.maxWidth * .035,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                Spacer(flex: 1),
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(
