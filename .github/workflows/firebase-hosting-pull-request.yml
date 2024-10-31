@@ -13,8 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: cd /Users/johnzhou/code/flutter/flutter-portfolio/flutter_portfolio &&
-          flutter build web && firebase login && firebase init && firebase
+      - run: flutter build web && firebase login && firebase init && firebase
           deploy
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
