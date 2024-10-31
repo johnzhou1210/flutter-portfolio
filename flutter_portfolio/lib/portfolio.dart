@@ -140,6 +140,9 @@ class _PortfolioState extends State<Portfolio> {
         builder: (BuildContext context, BoxConstraints constraints) {
       return Column(
         children: [
+          SizedBox(
+            height: constraints.maxHeight * .01,
+          ),
           const Text(
             'My Portfolio',
             style: TextStyle(

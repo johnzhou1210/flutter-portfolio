@@ -7,6 +7,7 @@ import 'package:flutter_portfolio/portfolio.dart';
 import 'package:flutter_portfolio/contact.dart';
 import 'package:flutter_portfolio/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 List<String> sections = <String>['Home', 'About Me', 'Portfolio', 'Contact'];
 
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'John Zhou Portfolio',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        textTheme: GoogleFonts.robotoMonoTextTheme(ThemeData.dark().textTheme),
+      ),
       home: const Navigator(),
     );
   }
@@ -75,17 +77,21 @@ class _NavigatorState extends State<Navigator>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).splashColor,
+        backgroundColor: Theme.of(context).primaryColor,
+        toolbarHeight: 86,
         title: const Text(
           'John Zhou',
-          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 48, fontWeight: FontWeight.normal),
         ),
         leading: IconButton(
           onPressed: () {
             _saveTabIndex(0);
             html.window.location.reload();
           },
-          icon: const Icon(Icons.home),
+          icon: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.home, size: 32),
+          ),
           tooltip: 'Home',
         ),
         bottom: TabBar(
@@ -96,7 +102,13 @@ class _NavigatorState extends State<Navigator>
               _saveTabIndex(newIndx);
             });
           },
-          tabs: sections.map((section) => Tab(text: section)).toList(),
+          tabs: sections
+              .map((section) => Tab(
+                      child: Text(
+                    section,
+                    style: const TextStyle(fontSize: 32),
+                  )))
+              .toList(),
         ),
         actions: [
           TextButton.icon(
@@ -105,13 +117,22 @@ class _NavigatorState extends State<Navigator>
                   'https://drive.google.com/file/d/10QNHN_C_h2AxeHVqApq9a82BVIOz3aTO/view?usp=sharing';
               LaunchURL(fileUrl);
             },
-            icon: const Icon(Icons.download),
-            label: const Text('Resume'),
+            icon: const Icon(
+              Icons.download,
+              size: 32,
+            ),
+            label: const Padding(
+              padding: const EdgeInsets.all(8),
+              child: const Text(
+                'Resume',
+                style: TextStyle(fontSize: 32),
+              ),
+            ),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 128, right: 128),
         child: TabBarView(
           controller: _tabController,
           children: const [
